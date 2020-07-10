@@ -7,13 +7,14 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilib.Joystick;
+import edu.wpi.first.wpilibj.Joystick;
+import frc.robot.Constants;
 
 /**
  * Add your docs here.
  */
-public class Joystick {
+public class joysUtil {
 
-public Joystick stick = new Joystick(port);
+    public Joystick stick = new Joystick(Constants.joystickPort);
 
 }

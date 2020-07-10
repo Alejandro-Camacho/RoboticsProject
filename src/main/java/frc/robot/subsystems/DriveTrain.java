@@ -8,16 +8,20 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
-public class Motors extends SubsystemBase {
+
+
+public class DriveTrain extends SubsystemBase {
   /**
    * Creates a new Motors.
    */
-   motorOne;
-   motorTwo;
-   motorThree;
+  static speedController = new WPI_VictorSPX(constants.method.constnat);
+  WPI_VictorSPX motorOne;
+  WPI_VictorSPX motorTwo;
+  WPI_VictorSPX motorThree;
 
-  public Motors() {
+  public DriveTrain() {
 
   }
 
