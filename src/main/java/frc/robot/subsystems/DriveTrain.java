@@ -7,8 +7,11 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import frc.robot.Constants;
 
 
 
@@ -16,10 +19,25 @@ public class DriveTrain extends SubsystemBase {
   /**
    * Creates a new Motors.
    */
-  static speedController = new WPI_VictorSPX(constants.method.constnat);
-  WPI_VictorSPX motorOne;
-  WPI_VictorSPX motorTwo;
-  WPI_VictorSPX motorThree;
+  static SpeedController = new WPI_VictorSPX(constants.method.constant);
+  static SpeedController motorOne;
+  static SpeedController motorTwo;
+  static SpeedController motorThree;
+  
+  motorOne = new WPI_VictorSPX(Constants.DriveConstants.kPracOneID);
+  motorTwo = new WPI_VictorSPX(Constants.DriveConstants.kPracTwoID);
+  motorThree = new WPI_VictorSPX(Constants.DriveConstants.kPracThreeID);
+
+  SpeedControllerGroup groupOne = new SpeedControllerGroup(motorOne, motorTwo);
+  SpeedControllerGroup groupTwo = new SpeedControllerGroup(motorThree);
+
+  public DifferentialDrive drive = new DifferentialDrive(groupOne, groupTwo);
+
+  public void manualDrive(double move, double turn) {
+
+    drive.arcadeDrive(move, turn);
+
+  }
 
   public DriveTrain() {
 
