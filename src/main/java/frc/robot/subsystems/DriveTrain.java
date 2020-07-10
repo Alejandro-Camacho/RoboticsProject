@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import frc.robot.Constants;
+import frc.robot.commands.DriveCommand;
 
 
 
@@ -35,6 +36,13 @@ public class DriveTrain extends SubsystemBase {
 
   public void manualDrive(double move, double turn) {
 
+    if (Math.abs(move) < 0.10) {
+      move = 0;
+    }
+    
+    if (Math.abs(turn) < 0.10) {
+      move = 0;
+    }
     drive.arcadeDrive(move, turn);
 
   }
@@ -47,4 +55,14 @@ public class DriveTrain extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
   }
+
+@Override
+public void initDefaultCommand() {
+
+setDefaultCommand(new DriveCommand());
+
+}
+
+
+
 }

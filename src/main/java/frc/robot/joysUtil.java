@@ -13,7 +13,7 @@ import frc.robot.Constants;
 /**
  * Add your docs here.
  */
-public class joysUtil {
+public class JoysUtil {
 
     public Joystick stick = new Joystick(Constants.joystickPort);
 
